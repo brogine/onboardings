@@ -29,10 +29,12 @@ const renderInputByType = (
 ) => {
   switch (Number(type)) {
     case DynamicStepInputTypes.Number:
-      return <input className="form-control" type="number" name={name} onChange={onChange} />
+      return (
+        <input required className="form-control" type="number" name={name} onChange={onChange} />
+      )
     case DynamicStepInputTypes.Select:
       return (
-        <select className="form-select" name={name} defaultValue="" onChange={onChange}>
+        <select required className="form-select" name={name} defaultValue="" onChange={onChange}>
           <option disabled value="">
             Please, select an option
           </option>
@@ -42,9 +44,9 @@ const renderInputByType = (
         </select>
       )
     case DynamicStepInputTypes.Text:
-      return <input className="form-control" type="text" name={name} onChange={onChange} />
+      return <input required className="form-control" type="text" name={name} onChange={onChange} />
     case DynamicStepInputTypes.Textarea:
-      return <textarea className="form-control" name={name} cols={3} onChange={onChange} />
+      return <textarea required className="form-control" name={name} cols={3} onChange={onChange} />
     default:
       return null
   }
