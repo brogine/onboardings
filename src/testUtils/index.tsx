@@ -5,9 +5,11 @@ import type { RenderOptions } from '@testing-library/react'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import type { PreloadedState } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
+import { Formik } from 'formik'
 import type { RootState } from '../store/types'
 import onboardingsSliceReducer from '../features/onboarding/onboardingsSlice'
 import dataSliceReducer from '../features/data/dataSlice'
+import schema from '../components/builder/schema'
 
 const testState = { onboardings: {}, data: {} } as RootState
 const rootReducer = combineReducers({
@@ -21,6 +23,14 @@ const testStore = (state: RootState) => {
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>
   store?: ReturnType<typeof testStore>
+}
+
+interface RenderWithFormikProps {
+  children: JSX.Element
+  formikProps: {
+    initialValues: any
+    onSubmit: (e: any) => void
+  }
 }
 
 export function renderWithProviders(
@@ -47,4 +57,15 @@ export function renderHookWithProvider(
   }
 
   return renderHook(() => hook(), { wrapper: Wrapper })
+}
+
+export const renderWithFormikProvider = ({
+  children,
+  formikProps: { initialValues, onSubmit },
+}: RenderWithFormikProps) => {
+  return render(
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={schema}>
+      {children}
+    </Formik>,
+  )
 }
