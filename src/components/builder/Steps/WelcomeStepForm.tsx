@@ -57,7 +57,7 @@ export default function WelcomeStepForm({ errors, icons }: WelcomeStepFormProps)
                     ? icons.map((icon, index) => (
                         <ListGroup.Item key={index}>
                           <Row>
-                            <Col md={10}>
+                            <Col md={9}>
                               <FastField
                                 as="select"
                                 className="form-select"
@@ -68,7 +68,7 @@ export default function WelcomeStepForm({ errors, icons }: WelcomeStepFormProps)
                               </FastField>
                             </Col>
                             <Col md={1}>{icon.icon ? <DynamicIcon icon={icon.icon} /> : null}</Col>
-                            <Col md={1}>
+                            <Col md={2}>
                               <CloseButton
                                 onClick={() => {
                                   if (window.confirm('Are you sure you want to remove this item?'))
@@ -77,9 +77,13 @@ export default function WelcomeStepForm({ errors, icons }: WelcomeStepFormProps)
                               />
                             </Col>
                           </Row>
-                          <Form.FloatingLabel label="Label for the icon">
+                          <Form.FloatingLabel
+                            label="Label for the icon"
+                            controlId={`${BASE_NAME}.icons[${index}].label`}
+                          >
                             <Field
                               name={`${BASE_NAME}.icons[${index}].label`}
+                              id={`${BASE_NAME}.icons[${index}].label`}
                               type="text"
                               className="form-control"
                             />

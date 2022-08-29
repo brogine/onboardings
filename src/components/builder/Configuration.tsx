@@ -9,10 +9,6 @@ interface ConfigurationProps {
   errors: string | FormikErrors<OnboardingConfiguration> | undefined
 }
 
-// font-family: 'Montserrat', sans-serif;
-// font-family: 'Raleway', sans-serif;
-// font-family: 'Source Sans Pro', sans-serif;
-
 const mapeableFonts = Object.keys(AvailableFonts)
   .filter((value) => Number.isInteger(Number(value)))
   .map((key) => ({ key: Number(key), value: AvailableFonts[Number(key)] }))

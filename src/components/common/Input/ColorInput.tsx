@@ -1,4 +1,4 @@
-import { ErrorMessage, Field } from 'formik'
+import { Field } from 'formik'
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
@@ -18,7 +18,7 @@ const ColorInput = ({ name, label, error }: ColorInputProps) => {
         type="color"
         className={`form-control ${error ? 'is-invalid' : ''}`}
       />
-      <ErrorMessage name={name} component="div" className="invalid-feedback" />
+      <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
     </Form.Group>
   )
 }

@@ -10,17 +10,15 @@ interface TextInputProps {
 
 const TextInput = ({ name, label, error }: TextInputProps) => {
   return (
-    <Form.Group className="mb-3" controlId={name}>
-      <Form.FloatingLabel label={label}>
-        <Field
-          name={name}
-          id={name}
-          type="text"
-          className={`form-control ${error ? 'is-invalid' : ''}`}
-        />
-      </Form.FloatingLabel>
-      <ErrorMessage name={name} component="div" className="invalid-feedback" />
-    </Form.Group>
+    <Form.FloatingLabel label={label} className="mb-3" controlId={name}>
+      <Field
+        name={name}
+        id={name}
+        type="text"
+        className={`form-control ${error ? 'is-invalid' : ''}`}
+      />
+      <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
+    </Form.FloatingLabel>
   )
 }
 

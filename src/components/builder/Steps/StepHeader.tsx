@@ -1,11 +1,6 @@
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons'
-import React, { useState } from 'react'
-import { AccordionContext } from 'react-bootstrap'
-import { useAccordionButton } from 'react-bootstrap/esm/AccordionButton'
-import Button from 'react-bootstrap/esm/Button'
-import ButtonGroup from 'react-bootstrap/esm/ButtonGroup'
-import Col from 'react-bootstrap/esm/Col'
-import Row from 'react-bootstrap/esm/Row'
+import { useState } from 'react'
+import { Button, ButtonGroup, Col, Row, useAccordionButton } from 'react-bootstrap'
 
 interface StepHeaderProps {
   title: string
