@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import OnboardingWizard from '../components/viewer/OnboardingWizard'
 import { NOT_FOUND_URL } from '../router'
 import { selectAll } from '../features/onboarding/onboardingsSlice'
@@ -8,7 +8,6 @@ import { OnboardingStatus } from '../types'
 
 export default function OnboardingViewer() {
   const params = useParams()
-  const navigate = useNavigate()
   const onboarding = useSelector((state: RootState) => {
     return params.name
       ? selectAll(state.onboardings).find(
@@ -18,8 +17,7 @@ export default function OnboardingViewer() {
   })
 
   if (onboarding === undefined) {
-    // navigate(NOT_FOUND_URL) // this does not work
-    return null
+    return <Navigate to={NOT_FOUND_URL} replace />
   }
 
   return <OnboardingWizard onboarding={onboarding} currentStep={params.step || 'welcome'} />
