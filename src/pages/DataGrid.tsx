@@ -1,4 +1,4 @@
-import { SyntheticEvent } from 'react'
+import { Fragment, SyntheticEvent } from 'react'
 import { Row, Col, Table } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { selectAll } from '../features/data/dataSlice'
@@ -16,28 +16,32 @@ const renderRow = ({ id, onboardingId, data }: Data) => {
   }
 
   return (
-    <>
-      <tr key={id} onClick={onRowClick} style={{ cursor: 'pointer' }}>
+    <Fragment key={id}>
+      <tr onClick={onRowClick} style={{ cursor: 'pointer' }}>
         <td>{id}</td>
         <td>{onboardingId}</td>
       </tr>
       <tr className="collapse">
         <td colSpan={3}>
           <table>
-            <tr>
-              <th>Key</th>
-              <th>Value</th>
-            </tr>
-            {data.map((element, index) => (
-              <tr key={index}>
-                <td>{element.key}</td>
-                <td>{element.value}</td>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
               </tr>
-            ))}
+            </thead>
+            <tbody>
+              {data.map((element, index) => (
+                <tr key={index}>
+                  <td>{element.key}</td>
+                  <td>{element.value}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </td>
       </tr>
-    </>
+    </Fragment>
   )
 }
 
