@@ -1,5 +1,5 @@
 import { FastField, Field, FieldArray, FormikErrors } from 'formik'
-import { Row, Col, ListGroup, Button, CloseButton } from 'react-bootstrap'
+import { Row, Col, ListGroup, Button, CloseButton, Form } from 'react-bootstrap'
 import * as antdIcons from '@ant-design/icons'
 import { StepIcon, WelcomeStep } from '../../../types'
 import DynamicIcon from '../../common/DynamicIcon'
@@ -56,18 +56,34 @@ export default function WelcomeStepForm({ errors, icons }: WelcomeStepFormProps)
                   {icons.length
                     ? icons.map((icon, index) => (
                         <ListGroup.Item key={index}>
-                          <CloseButton onClick={() => arrayHelpers.remove(index)} />
-                          {icon.icon ? <DynamicIcon icon={icon.icon} /> : null}
-                          <FastField as="select" name={`${BASE_NAME}.icons[${index}].icon`}>
-                            <option value="">Select an Icon</option>
-                            {iconOptionList()}
-                          </FastField>
-                          <Field
-                            name={`${BASE_NAME}.icons[${index}].label`}
-                            placeholder="Label for the icon"
-                            type="text"
-                            className="form-control"
-                          />
+                          <Row>
+                            <Col md={10}>
+                              <FastField
+                                as="select"
+                                className="form-select"
+                                name={`${BASE_NAME}.icons[${index}].icon`}
+                              >
+                                <option value="">Select an Icon</option>
+                                {iconOptionList()}
+                              </FastField>
+                            </Col>
+                            <Col md={1}>{icon.icon ? <DynamicIcon icon={icon.icon} /> : null}</Col>
+                            <Col md={1}>
+                              <CloseButton
+                                onClick={() => {
+                                  if (window.confirm('Are you sure you want to remove this item?'))
+                                    arrayHelpers.remove(index)
+                                }}
+                              />
+                            </Col>
+                          </Row>
+                          <Form.FloatingLabel label="Label for the icon">
+                            <Field
+                              name={`${BASE_NAME}.icons[${index}].label`}
+                              type="text"
+                              className="form-control"
+                            />
+                          </Form.FloatingLabel>
                         </ListGroup.Item>
                       ))
                     : null}
