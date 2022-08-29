@@ -1,0 +1,93 @@
+html, .wizard {
+  background-color: var(--bs-gray-200);
+}
+
+.wizard__header {
+  background-color: var(--bs-gray-500);
+  padding: 1em;
+}
+
+.wizard__header p {
+  text-align: center;
+}
+
+.wizard__header .nav {
+  justify-content: center;
+}
+
+.wizard__header .nav .nav-item {
+  margin: 0 0.3em;
+}
+
+.wizard__header .nav .nav-item .nav-link {
+  padding: 0.3em 2em;
+}
+
+.wizard__header .nav .nav-item .nav-link:not(.active) {
+  background-color: var(--bs-gray-700);
+}
+
+.wizard__header .nav .nav-item .nav-link.disabled {
+  cursor: not-allowed;
+}
+
+.wizard__body .tab-content {
+  background-color: var(--bs-white);
+  margin: 5em 12.5%;
+  min-height: 500px;
+  border-radius: 1em;
+  padding: 2em;
+  display: flex;
+}
+
+.wizard__step {
+  text-align: center;
+  width: 100%;
+}
+
+.tab-content .tab-pane.wizard__step.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.wizard__step-header {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.wizard__step:first-child .wizard__next {
+  display: block;
+  margin: 0 auto;
+}
+
+.wizard__step-footer, .wizard__step-header {
+  flex: 1;
+}
+
+.wizard__step-body {
+  flex: 8;
+  padding: 1em 0;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.wizard__step:not(:first-child) .wizard__step-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wizard__step-body .form-group {
+  text-align: left;
+}
+
+.wizard__step-body .form-group label {
+  text-transform: capitalize;
+}
+
+.wizard__step-body .form-group .help-text {
+  font-size: 0.75em;
+}
+
+.wizard__step-footer .btn {
+  border: 1px solid var(--bs-gray-700);
+}
