@@ -1,0 +1,15 @@
+.card-header .toggle-collapse {
+  cursor: pointer;
+}
+
+.card-header h5 {
+  margin-bottom: 0;
+}
+
+.card-header h5 .anticon {
+  vertical-align: 0.125em;
+}
+
+.accordion .accordion-collapse {
+  padding: 0.5em;
+}
